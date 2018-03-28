@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>NN in RCJ</title>
+<style type="text/css">
+.auto-style1 {
+	text-align: center;
+	font-family: "Times New Roman", Times, serif;
+	font-size: xx-large;
+	color: #0000FF;
+}
+.auto-style2 {
+	text-align: center;
+}
+.auto-style4 {
+	text-align: left;
+	font-size: large;
+}
+.float-left {
+}
+.auto-style6 {
+	color: #FC0000;
+}
+.auto-style7 {
+	background-color: #FFFF00;
+}
+.auto-style8 {
+	color: #FF0000;
+	background-color: #FFFF00;
+}
+.auto-style9 {
+	text-align: center;
+	font-size: x-large;
+}
+.auto-style10 {
+	text-align: left;
+	font-size: medium;
+}
+.auto-style11 {
+	text-align: center;
+	font-size: large;
+}
+.auto-style12 {
+	background-color: #00FFFF;
+}
+.auto-style13 {
+	background-color: #00FF00;
+}
+.auto-style14 {
+	vertical-align: baseline;
+}
+.auto-style15 {
+	vertical-align: text-top;
+}
+.auto-style16 {
+	text-align: center;
+	font-size: x-large;
+	color: #FF0000;
+}
+</style>
+</head>
+
+<body style="background-color: #CCFFCC">
+
+<p class="auto-style1"><strong>Neural Networking in Infrared Locating</strong></p>
+<p class="auto-style2">Luke Dai</p>
+<ol>
+	<li>
+	<p class="auto-style10">State</p>
+	<ol>
+		<li>
+		<p class="auto-style10"><a href="#Project Description">Project Description</a></p>
+		</li>
+		<li>
+		<p class="auto-style10"><a href="#Goal">Goal</a></p>
+		</li>
+	</ol>
+	</li>
+	<li>
+	<p class="auto-style10">Plan</p>
+	<ol>
+		<li>
+		<p class="auto-style10"><a href="#Data_Collection">Data Collection</a></p>
+		</li>
+		<li>
+		<p class="auto-style10"><a href="#The_Neural_Network_">The Neural Network</a></p>
+		</li>
+	</ol>
+	</li>
+	<li>
+	<p class="auto-style10">Do</p>
+	<ol>
+		<li>
+		<p class="auto-style10"><a href="#Training_">Training</a></p>
+		</li>
+		<li>
+		<p class="auto-style10"><a href="#Result">Result</a></p>
+		</li>
+		<li>
+		<p class="auto-style10"><a href="#New Method">New Method</a></p>
+		</li>
+		<li>
+		<p class="auto-style10"><a href="#New_Result">New Result</a></p>
+		</li>
+	</ol>
+	</li>
+	<li>
+	<p class="auto-style10">Conclude</p>
+	<ol>
+		<li>
+		<p class="auto-style10"><a href="#Future">Future</a></p>
+		</li>
+	</ol>
+	</li>
+	<li>
+	<p class="auto-style10"><a href="#About_Me">About Me</a></p>
+	</li>
+</ol>
+<p class="auto-style9"><strong><a name="Project Description">Project Description</a></strong></p>
+<p class="auto-style4">I am the captain and software writer of a Robotic Soccer 
+team, <span class="auto-style6">Team Dimensions</span>, that competes in Robo 
+Cup Junior. I have gone to the International level and even won 3rd Place World 
+Wide. I am always seeking ways to perfect the robots. I am trying to find a 
+robust way of locating the soccer ball because the infrared sensors cannot give 
+me a definite position. <span class="auto-style7">I am going to try to use 4 sensors with 5 mini IR receivers to locate an 
+infrared signal with respect to the center of the robot.</span> These sensors 
+measure the intensity of IR.</p>
+<p class="auto-style4">&nbsp;</p>
+<p class="auto-style9"><strong><a name="Goal">Goal</a></strong></p>
+<p class="auto-style4" style="height: 94px">
+<img height="75" src="Ball.jpeg" style="float: left" width="75" /><span class="auto-style8"><strong>To 
+create a neural network that can accurately and efficiently predict where the 
+signal is. To prove that there is a mathematical formula which can output the 
+location when given the 20 IR receiver data.</strong></span> In this project, I use a ball 
+(shown left) that emits infrared light and I use the raw value of the 5 sensors 
+on each of the 4
+<a href="https://www.hitechnic.com/cgi-bin/commerce.cgi?preadd=action&amp;key=NSK1042">
+HiTechnic IR Seeker V2</a> to detect the ball.</p>
+<p class="auto-style4">&nbsp;</p>
+<p class="auto-style9"><strong><a name="Data_Collection">Data Collection</a></strong></p>
+<p class="auto-style4">I need to have a method to sample all the IR values of 
+the reading, the distance from the ball, and the angle of the ball with respect 
+to the y-axis increasing clockwise. I devised a method with the use of a slow 
+moving motor to pull the ball and 
+<a href="http://www.amazon.com/Production-Experience-Satisfied-Motorized-Rotating/dp/B00NAN3DCQ?ie=UTF8&amp;psc=1&amp;redirect=true&amp;ref_=oh_aui_search_detailpage">rotating lazy susan</a> to spin the robot.</p>
+<p class="auto-style4" style="height: 262px">
+<img alt="Compass" height="260" src="Compass.jpg" width="351" class="auto-style14" style="float: left" /><img alt="Phone Holder" height="260" src="Phone%20Holder.jpg" width="323" class="auto-style15" style="float: right" />The compass of the robot reads the angle of the ball with 
+respect to the y-axis of the robot. The 
+lazy susan will spin the robot at around 3 rotations per minute while the 
+compass reads the angle with respect to the starting direction. Overall, the data is printed onto a serial monitor which is 
+recorded onto an android.</p>
+<p class="auto-style11">
+&nbsp;</p>
+<p class="auto-style4" style="height: 264px">
+<img alt="Wall" height="260" src="Wall.jpg" width="351" class="auto-style15" style="float: left" /><img alt="Setup" height="260" src="Setup.jpg" width="351" class="auto-style15" style="float: right" />The ball is 
+attached to a string which is pulled by a slow moving motor. The ball has a 
+sheet of paper so that the robot knows what the distance of the ball is from the 
+center of the robot. The ultrasonic sensor (<a href="https://www.parallax.com/product/28015">Ping))) 
+sensor</a>) detects the paper's distance by measuring the time it takes for 
+sound to travel to the paper, bounce off the paper and come back to the sensor.</p>
+<p class="auto-style4
+">&nbsp;</p>
+<p class="auto-style9"><strong><a name="The_Neural_Network_">The Neural Network</a></strong></p>
+<p class="auto-style4">Neural Network is a machine learning method of fitting a 
+function to a set of data with inputs and outputs. It simulates the passing of 
+information or values like the brain - information is passed through synapses in 
+the brain and interpreted into another information in the neuron. The process of 
+information being passed from neuron to neuron is what makes the Neural Network 
+efficient in training as it also simulates how humans learn. From a past 
+project, I have concluded a generic architecture of the Neural Network.</p>
+<p class="auto-style11">
+<img alt="Neural Network" height="194" src="neural%20network.jpeg" width="396" /></p>
+<p class="auto-style9"><strong><a name="Training_">Training</a></strong></p>
+<p class="auto-style4">I set the <span class="auto-style13">20 IR raw values</span> directly from the mini sensors 
+in the Hitechnic IR Seekers to be the input. The outputs are 
+<span class="auto-style12">the angle of the 
+ball with respect to the y-axis of the robot and distance away from the center 
+of the robot</span>.</p>
+<p class="auto-style11">
+<img alt="Diagram" height="257" src="Diagram.jpg" width="285" /></p>
+<p class="auto-style9"><strong><a name="Result">Result</a></strong></p>
+<p class="auto-style4">The mean distance of the prediction to the actual point 
+is 9cm, which is about one ball (7 cm) width. The standard deviation is 12cm, 
+which is another 2 ball width. This result is already good enough to be used than 
+my previous ball location program, which is made of hard-coded conditional 
+statements and general approximations. However, the distribution of the distance 
+is not normal as shown. There must be something that can improve the training 
+and make the error more normally distributed.</p>
+<p class="auto-style11">
+<img alt="Result" height="577" src="Result.png" width="680" /></p>
+<p class="auto-style16"><strong><a name="New Method">New Method</a></strong></p>
+<p class="auto-style4">Since the angle is a periodic function, it might be hard 
+to fit a non periodic function to it (as it is hard to fit a polynomial equation 
+to sin(x) and other trigonometric functions). So I tried changing the outputs to 
+x and y, setting the origin at the robot's center. I know that when I do such 
+thing, my actual data may receive more error, as my human and sensor error is 
+propagated from the multiplication (x = r*sin(theta) and y = r*cos(theta)).</p>
+<p class="auto-style4">&nbsp;</p>
+<p class="auto-style16"><strong><a name="New_Result">New Result</a></strong></p>
+<p class="auto-style4">As predicted, the standard deviation and mean of both X 
+and Y have decreased along with the deviation of the distance (by half!). As I 
+have not fine tuned the network of the Cartesian method, this method can be 
+drastically improved. Overall, this method is a better way to approach the IR 
+values because now, the distribution of the difference in predicted and actual 
+looks relatively normal and symmetrical unlike the Polar method.
+<span class="auto-style7">I can now assume that my network can predict about 65% 
+of my IR readings to about 2 balls width (15cm).</span></p>
+<p class="auto-style11">
+<img alt="New Result" height="592" src="New%20Result.png" width="704" /></p>
+<p class="auto-style9"><strong><a name="Future">Future</a></strong></p>
+<p class="auto-style4">The goal of the project is to find a method to accurately 
+predict where the ball is given the raw sensor values of the HiTechnic IR 
+Seekers. I have demonstrated that the Neural Network has worked to a 
+satisfactory level and can still be improved upon by fine tuning. I discussed 
+with Harvard Statistics Professor Meng who advised me to use
+<span class="auto-style13">Factor Analysis to reduce the amount of inputs in my 
+neural network</span>. In the next phase, I will be testing whether the neural 
+network improves my performance.</p>
+<p class="auto-style4">&nbsp;</p>
+<p class="auto-style9"><strong><a name="About_Me">About Me</a></strong></p>
+
+<p class="auto-style4">I am currently a Junior at Montgomery Highschool. I have 
+been repeatedly representing the nation in Robo Cup Junior and am always finding 
+ways to improve my soccer playing robots. I really like to use robust methods 
+like math to explain the world. I always try to incorporate whatever I learn to 
+everything else that I do. The Neural Network is a project that I have been 
+working with Professor Tuckerman of New York University and is an idea that I 
+have been truly eager to apply to my other projects such as RCJ. I am a Gold 
+League member in USA Computing Olympiad since 2015 and am a USA Physics Olympiad 
+Semifinalist. The skills and concepts that I learn in Computer Science and 
+Physics helps me create more ideas to improve all aspects of my life.</p>
+
+</body>
+
+</html>
